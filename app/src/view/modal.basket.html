@@ -1,0 +1,57 @@
+<div id="myBasket" class="modal">
+  <div class="modal-dialog" style="width:70%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title"><center>My Basket <small>({{ctrl.shoppingcart.items.length}})</small></center></h4>
+      </div>
+      <div class="modal-body">
+        <div class="row" ng-if="ctrl.shoppingcart.items.length !== 0">
+          <div class="col-lg-4" ng-repeat="commerceItem in ctrl.shoppingcart.items track by $index">
+            <div class="panel" ng-init="ctrl.getProductById(commerceItem, ctrl.products)">
+              <div class="panel-body">
+                <center>
+                  <img ng-src="{{commerceItem.product.image}}" width="100" class="img-responsive">
+                </center>
+
+                <div class="productInfo">
+                  <h5 class="help-block">
+                    <center>{{commerceItem.product.name}}</center>
+                  </h5>
+
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <h4><i class="fa fa-usd" aria-hidden="true"></i> {{formatCurrency(commerceItem.amount)}}</h4>
+                    </div>
+                    <div class="col-lg-4">
+                      <h4><i><small>Quant:</small></i> {{commerceItem.quantity}}</h4>
+                    </div>
+                  </div>
+
+                  <a class="btn btn-block btn-danger btn-flat btn-sm" ng-click="ctrl.removeItemShoppingcart(commerceItem, $index)">
+                    <i class="fa fa-times" ></i>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-if="ctrl.shoppingcart.items.length === 0">
+          <div class="panel-body">
+            <h2><center>Your Basket is Empty!</center></h2>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" ng-if="ctrl.shoppingcart.items.length !== 0">
+        <div class="panel-body">
+          <br/>
+          <h1 style="text-align:right">
+            ${{ctrl.shoppingcart.amount}}
+          </h1>
+          <a class="btn btn-success btn-lg btn-raised" ng-click="ctrl.buy()">Buy <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

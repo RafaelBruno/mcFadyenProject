@@ -1,0 +1,44 @@
+<br/>
+<div class="row">
+  <div class="col-lg-4" ng-repeat="product in ctrl.products track by $index">
+    <div class="panel">
+      <div class="panel-body">
+        <center>
+          <img ng-src="{{product.image}}" class="img-responsive">
+        </center>
+
+        <div class="productInfo">
+          <span id="name" class="help-block">
+            <center>{{product.name}}</center>
+          </span>
+
+          <div id="quantityOfThisProduct" ng-init="product.quantityOfThisProduct = 1">
+            <a class="cursor"><i class="fa fa-minus-circle" ng-click="ctrl.minusProducts(product)"></i></a>
+            <span>{{product.quantityOfThisProduct}}</span>
+            <a class="cursor"><i class="fa fa-plus-circle" ng-click="ctrl.plusProducts(product)"></i></a>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <span id="price"><i class="fa fa-usd" aria-hidden="true"></i> {{formatCurrency(product.price)}}</span>
+            </div>
+          </div>
+
+          <a id="addToCart" class="btn btn-block btn-primary btn-raised btn-sm" ng-click="ctrl.addItemShoppingcart(product)">
+            <i class="fa fa-cart-plus"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD BTN -->
+<a id="addBtn" class="btn btn-primary btn-fab" ng-click="goToModal('myBasket')">
+  <i class="fa fa-shopping-basket"></i>
+  <span class="badge" ng-if="ctrl.shoppingcart.items.length !== 0">{{ctrl.shoppingcart.items.length}}</span>
+</a>
+
+<!-- MODALS -->
+<div data-ng-include="'app/src/view/modal.basket.html'"></div>
