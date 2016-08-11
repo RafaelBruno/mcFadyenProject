@@ -1,4 +1,4 @@
-# mcFadyenProject
+# McFadyenProject
 Shopping Cart Project
 
 
