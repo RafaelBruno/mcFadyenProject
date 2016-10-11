@@ -1,10 +1,8 @@
-# McFadyenProject
-Shopping Cart Project
-
+# Shopping Cart Project with AngularJs
 
 Technologies used in the project:
 
-● AngularJS 
+● AngularJS 1.4
 ● Bootstrap 
 ● Grunt 
 ● Less 
